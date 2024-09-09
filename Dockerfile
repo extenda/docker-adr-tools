@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:20-alpine
 
 # adr-tools needs bash
 RUN apk --no-cache add bash
@@ -10,10 +10,9 @@ RUN tar -xzf adr-tools.tar.gz adr-tools-3.0.0/src \
   && rm adr-tools.tar.gz
 
 COPY entrypoint.sh .
+COPY generate-toc.js .
 
 ENV PATH="/usr/local/bin/adr-tools-3.0.0/src:${PATH}"
-
-RUN npm install --global adr-log
 
 WORKDIR /docs
 
