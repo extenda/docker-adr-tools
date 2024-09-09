@@ -1,8 +1,7 @@
 # docker-adr-tools
 
-This docker image combines [adr-tools](https://github.com/npryce/adr-tools) and 
-[adr-log](https://github.com/adr/adr-log) to make it easier to manage ADRs in 
-GitHub Markdown pages.
+This docker image wraps [adr-tools](https://github.com/npryce/adr-tools) with a custom table of contents generator
+inspired by [adr-log](https://github.com/adr/adr-log) to make it easier to manage ADRs in GitHub Markdown pages.
 
 ## Usage
 
