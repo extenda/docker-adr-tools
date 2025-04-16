@@ -11,7 +11,9 @@ const generateToc = () => {
     .map((file) => {
       const num = file.split('-')[0];
       const lines = fs.readFileSync(path.join(adrDir, file), 'utf8').split('\n');
-      const title = lines[0].substring(2).split('.', 2)[1].trim();
+      const firstLine = lines[0].substring(2);
+      const dotIndex = firstLine.indexOf('.');
+      const title = dotIndex !== -1 ? firstLine.substring(dotIndex + 1).trim() : firstLine.trim();
       let superseded = false;
       for (var i = 1; i < lines.length; i+=1) {
         if (lines[i] === '## Status') {
