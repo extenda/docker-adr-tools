@@ -6,8 +6,10 @@ RUN apk --no-cache add bash
 WORKDIR /usr/local/bin
 
 ADD https://github.com/npryce/adr-tools/archive/3.0.0.tar.gz adr-tools.tar.gz
+# adr-tools 3.0.0 misspells these two words in the ADRs it writes
 RUN tar -xzf adr-tools.tar.gz adr-tools-3.0.0/src \
-  && rm adr-tools.tar.gz
+  && rm adr-tools.tar.gz \
+  && sed -i -e 's/"Superceded by"/"Superseded by"/' -e 's/"Supercedes"/"Supersedes"/' adr-tools-3.0.0/src/adr-new
 
 COPY entrypoint.sh .
 COPY generate-toc.js .
